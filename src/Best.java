@@ -6,7 +6,7 @@ public class Best {
     private int[] vector;
 
     public Best(double cost, int[] vector) {
-        this.cost = 0;
+        this.cost = cost;
         this.vector = vector.clone();
     }
 
