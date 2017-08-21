@@ -29,7 +29,12 @@ public class GRASP {
         int c1 = rand.nextInt(perm.length + 1);
         int c2 = rand.nextInt(perm.length + 1);
 
-        int[] exclude = { c1, ((c1 + 1) % perm.length), ((c1 == 0) ? (perm.length - 1) : (c1 - 1)) };
+        int[] exclude = { 
+            c1,
+            ((c1 + 1) % perm.length),
+            ((c1 == 0) ? (perm.length - 1) : (c1 - 1))
+            //(perm.length - ((-c1) % perm.length) - 1)
+        };
 
         while (Arrays.binarySearch(exclude, (c2 = rand.nextInt(perm.length + 1))) >= 0){}
 
@@ -97,14 +102,14 @@ public class GRASP {
                     .getAsDouble();
             int i = 0;
             for (Double c : costs) {
-                if (c <= (min * alpha * (max - min))) {
+                if (c <= (min + alpha * (max - min))) {
                     rcl.add(candidates.get(i));
                 }
                 i++;
             }
 
             //if(rcl.size() > 0){
-                candidate_vector.add(rcl.get(rand.nextInt(rcl.size())));
+            candidate_vector.add(rcl.get(rand.nextInt(rcl.size())));
             //}
         }
 
